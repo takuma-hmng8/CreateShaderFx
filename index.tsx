@@ -1,15 +1,20 @@
-import { useRef } from "react";
 import * as THREE from "three";
+import { useRef } from "react";
 import { useFrame, extend, useThree } from "@react-three/fiber";
 import { usePerformanceMonitor } from "@react-three/drei";
 import { FxMaterial, TFxMaterial } from "./fxMaterial";
-import { CONFIG } from "./config";
 import { useSample } from "./useSample";
 
 // dreiのshaderMaterialを使うことで、key={FxMaterial.key}を有効にすることができ、hotReloadが使えます。
 extend({ FxMaterial });
 
-export const CreateKit = () => {
+const CONFIG = {
+   sampleFx: {
+      someValue: 0.0,
+   },
+};
+
+const CreateShaderFx = () => {
    const fxRef = useRef<TFxMaterial>();
 
    const size = useThree((state) => state.size);
@@ -36,3 +41,5 @@ export const CreateKit = () => {
       </mesh>
    );
 };
+
+export default CreateShaderFx;
