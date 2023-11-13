@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { useRef } from "react";
 import { useFrame, extend, useThree } from "@react-three/fiber";
 import { usePerformanceMonitor } from "@react-three/drei";

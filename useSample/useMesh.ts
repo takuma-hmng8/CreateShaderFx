@@ -2,7 +2,8 @@ import { useMemo } from "react";
 import * as THREE from "three";
 import vertexShader from "./shader/main.vert";
 import fragmentShader from "./shader/main.frag";
-import { useAddMesh } from "@/packages/use-shader-fx/src";
+
+import { useAddMesh } from "@hmng8/use-shader-fx";
 
 type TUniforms = {
    uTime: { value: number };

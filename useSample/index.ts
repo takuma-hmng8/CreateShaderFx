@@ -8,8 +8,8 @@ import {
    useSingleFBO,
    setUniform,
    useParams,
-} from "@/packages/use-shader-fx/src";
-import { HooksReturn } from "@/packages/use-shader-fx/src/hooks/types";
+} from "@hmng8/use-shader-fx";
+import type { HooksReturn } from "@hmng8/use-shader-fx/types/hooks";
 
 export type SampleParams = {
    /** some comments */
