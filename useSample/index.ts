@@ -9,7 +9,7 @@ import {
    setUniform,
    useParams,
 } from "@/packages/use-shader-fx/src";
-import { HooksReturn } from "@/packages/use-shader-fx/types/hooks/types";
+import { HooksReturn } from "@/packages/use-shader-fx/src/hooks/types";
 
 export type SampleParams = {
    /** some comments */
@@ -21,6 +21,10 @@ export type SampleObject = {
    material: THREE.Material;
    camera: THREE.Camera;
    renderTarget: THREE.WebGLRenderTarget;
+};
+
+export const SAMPLE_PARAMS: SampleParams = {
+   someValue: 0.0,
 };
 
 export const useSample = ({
@@ -41,21 +45,17 @@ export const useSample = ({
       dpr,
    });
 
-   const [params, setParams] = useParams<SampleParams>({
-      someValue: 0.0,
-   });
+   const [params, setParams] = useParams<SampleParams>(SAMPLE_PARAMS);
 
    const updateFx = useCallback(
-      (props: RootState, updateParams: SampleParams) => {
+      (props: RootState, updateParams?: SampleParams) => {
          const { gl, clock, pointer } = props;
 
-         // ここでparamsを更新
-         setParams(updateParams);
-         setUniform(material, "uSomeValue", params.someValue!);
+         updateParams && setParams(updateParams);
 
+         setUniform(material, "uSomeValue", params.someValue!);
          setUniform(material, "uTime", clock.getElapsedTime());
 
-         // usePointerは{currentPointer,prevPointer,diffPointer,velocity,isVelocityUpdate}を返します
          const { velocity } = updatePointer(pointer);
          setUniform(
             material,
@@ -63,7 +63,6 @@ export const useSample = ({
             Math.min(1.0, velocity.length() * 500)
          );
 
-         // FBOに焼き付けて、textureをreturnします
          const outPutTexture = updateRenderTarget(gl);
          return outPutTexture;
       },

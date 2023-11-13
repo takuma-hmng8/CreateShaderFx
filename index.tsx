@@ -5,7 +5,7 @@ import { usePerformanceMonitor } from "@react-three/drei";
 import { FxMaterial, TFxMaterial } from "./fxMaterial";
 import { useSample } from "./useSample";
 
-// dreiのshaderMaterialを使うことで、key={FxMaterial.key}を有効にすることができ、hotReloadが使えます。
+// By using drei's shaderMaterial, you can enable key={FxMaterial.key} and use hotReload.
 extend({ FxMaterial });
 
 const CONFIG = {
@@ -22,7 +22,7 @@ const CreateShaderFx = () => {
 
    const [updateSample, setSample, sampleObj] = useSample({ size, dpr });
 
-   // factorに応じたパフォーマンスコントロールを考慮して、setParams関数は作成してください。
+   // Please create the setParams function considering performance control according to the factor.
    usePerformanceMonitor({
       onChange({ factor }) {
          setSample({ someValue: factor });
