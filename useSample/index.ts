@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react";
 import * as THREE from "three";
-import { useMesh } from "./useMesh";
 import { RootState, Size } from "@react-three/fiber";
+import { useMesh } from "./useMesh";
 import {
    useCamera,
    usePointer,
