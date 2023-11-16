@@ -5,14 +5,12 @@ import fragmentShader from "./shader/main.frag";
 
 import { useAddMesh } from "@hmng8/use-shader-fx";
 
-type TUniforms = {
-   uTime: { value: number };
-   uVelocity: { value: number };
-   uSomeValue: { value: number };
-};
-
 export class SampleMaterial extends THREE.ShaderMaterial {
-   uniforms!: TUniforms;
+   uniforms!: {
+      uTime: { value: number };
+      uVelocity: { value: number };
+      uSomeValue: { value: number };
+   };
 }
 
 export const useMesh = (scene: THREE.Scene) => {

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useFrame, extend, useThree } from "@react-three/fiber";
 import { usePerformanceMonitor } from "@react-three/drei";
-import { FxMaterial, TFxMaterial } from "./fxMaterial";
+import { FxMaterial, FxMaterialProps } from "./fxMaterial";
 import { useSample } from "./useSample";
 
 // By using drei's shaderMaterial, you can enable key={FxMaterial.key} and use hotReload.
@@ -14,7 +14,7 @@ const CONFIG = {
 };
 
 const CreateShaderFx = () => {
-   const fxRef = useRef<TFxMaterial>();
+   const fxRef = useRef<FxMaterialProps>();
 
    const size = useThree((state) => state.size);
    const dpr = useThree((state) => state.viewport.dpr);
